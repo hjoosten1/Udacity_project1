@@ -8,7 +8,6 @@ import pandas as pd
 import numpy as np
 import sklearn
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import LabelEncoder
 
 ## import data and check what features and data it contains
 df = pd.read_csv('housing.csv')
