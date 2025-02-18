@@ -10,6 +10,7 @@ import sklearn
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 
+## import data and check what features and data it contains
 df = pd.read_csv('housing.csv')
 df.dataframeName = 'housing.csv'
 df.head()
@@ -17,16 +18,17 @@ df.head()
 
 # In[3]:
 
-
+## check for outliers, missing data
 df.describe()
 
 
 # In[4]:
 
-
+## check for null values per column
 nan_count = df.isnull().sum()
 print(nan_count)
 
+## Interpolate the missing bedroom values
 df['total_bedrooms'].fillna(df['total_bedrooms'].mean(), inplace=True)
 
 nan_count = df.isnull().sum()
@@ -35,18 +37,16 @@ print(nan_count)
 
 # In[5]:
 
-
+## calculate the average bedrooms per home and filter out values greater than 500001 as this is an error in the census 
 df['avg_pop_household'] = df['population'] / df['households']
 df['avg_rooms_household'] = df['total_rooms'] / df['households']
 df['avg_bedrooms_household'] = df['total_bedrooms'] / df['households']
-# df = df[df['avg_pop_household']<10]
-# df = df[df['avg_rooms_household']<50]
 df = df[df['median_house_value']<500000]
 
 
 # In[6]:
 
-
+## hot encode the categorical values 
 def ocean_cat(value):
     if (value == '<1H OCEAN') or (value == 'ISLAND'):
         return 0.5
@@ -61,7 +61,7 @@ df['ocean_cat'] = df['ocean_proximity'].apply(ocean_cat)
 
 # In[7]:
 
-
+## create histogram and scatter plots to determine correlations
 df.hist(bins=50,figsize=(10,12))
 plt.show()
 
@@ -83,6 +83,7 @@ df_no_string = df.drop(['ocean_proximity'], axis=1)
 corr_matrix = df_no_string.corr()
 corr_matrix['median_house_value'].sort_values(ascending=False)
 
+## median income and ocean_proximity are most important features
 
 # In[10]:
 
@@ -142,14 +143,16 @@ r2_test = r2_score(y_test,y_pred_test)
 
 print(mae_train)
 print(mae_test)
-
+## mae train and test are around 5000 
 
 # In[17]:
 
 
 print(r2_train)
 print(r2_test)
-
+## r2 train of 31%
+## r2 test of 32% 
+## not great but not terrible either
 
 # In[ ]:
 
