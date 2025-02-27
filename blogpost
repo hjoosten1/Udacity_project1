@@ -1,0 +1,35 @@
+Predicting California House Prices: A Data Science Exploration
+
+
+
+Introduction
+
+California's housing market is one of the most dynamic and expensive in the United States. As a part of my Udacity Data Scientist Nanodegree project, I explored the California housing dataset to understand the key factors influencing house prices and how accurately we can predict them using machine learning.
+
+Dataset
+
+The dataset, sourced from the California Housing dataset, contains information on various housing features, including median income, number of rooms, population, and ocean proximity. My goal was to uncover the most significant factors affecting housing prices and build a predictive model.
+
+Key Findings
+
+1. Income Matters Most
+
+The strongest predictor of house prices was median income. Wealthier areas tend to have significantly higher house prices.
+
+2. Ocean Proximity Plays a Role
+
+Homes closer to the ocean were generally more expensive. Properties categorized as "<1H OCEAN" (within an hour from the ocean) showed higher median values.
+
+3. More Rooms, Higher Price
+
+The number of total rooms also had a positive correlation with price, though it was not as strong as income.
+
+Predictive Model Performance
+
+I trained a regression model to predict house prices based on these features. Despite using multiple factors, the model achieved only 30% accuracy, indicating that while these factors are important, many external variables (such as market trends, economic conditions, and local policies) also influence prices.
+
+Conclusion
+
+While income, ocean proximity, and number of rooms are key drivers of California housing prices, predicting prices with high accuracy remains a challenge. Future improvements could include incorporating additional data such as crime rates, school quality, and interest rates to enhance prediction accuracy.
+
+Check out my full analysis and code on GitHub
